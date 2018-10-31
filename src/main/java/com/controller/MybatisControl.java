@@ -24,7 +24,7 @@ public class MybatisControl {
     @RequestMapping("/boot/update/{id}/{name}")
     public Object updateUser(@PathVariable("id") Integer id, @PathVariable("name") String name){
         User user = userService.getUserByid(id);
-        user.setName(name);
+        user.setUsername(name);
         return userService.updateUser(user);
     }
 

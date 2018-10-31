@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class HelloWorld {
+public class IndexController {
     @RequestMapping("/index")
     public   String index(Model model){
         return "index";

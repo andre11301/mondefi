@@ -1,8 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
+    <title>Welcome Expertus</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/index.css}" />
+    <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Condiment'>
 </head>
-<body >
+<body th:background="@{/static/images/home-bg.jpg}" >
+
+<div id="home">
+    <div id="text">
+
+        <div >
+            <h1 id="title">WELCOME TO EXPERTUS</h1>
+        </div>
+        </br></br>
+        <div>
+            <a th:href="@{/login}" class="btn btn-danger">LOGIN</a>
+            <a href="https://www.expertus.ca/" class="btn">LEARN MORE</a>
+        </div>
+
+    </div>
+</div>
 
 </body>
 </html>
