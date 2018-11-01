@@ -21,7 +21,7 @@ public class InterceptorWebConfig extends WebMvcConfigurationSupport {
                 "/static/**"
         };
 
-        registry.addInterceptor(new LoginInerceptor())
+        registry.addInterceptor(new LoginSercurityInerceptor())
                 .addPathPatterns(addpathPatterns)
                 .excludePathPatterns(excludePathPatterns);
     }

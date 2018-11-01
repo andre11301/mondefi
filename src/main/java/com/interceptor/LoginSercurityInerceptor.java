@@ -6,13 +6,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-public class LoginInerceptor implements HandlerInterceptor {
+public class LoginSercurityInerceptor implements HandlerInterceptor {
 
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        System.out.println("entre into interceptor");
         return true;
     }
 

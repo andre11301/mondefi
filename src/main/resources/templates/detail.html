@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>detail</title>
+    <script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+</head>
+<body>
+<div>
+    <span th:text="${username}"></span>
+    <span>welcome to expertus intern system</span>
+    <br>
+    <button type="submit" id ="btn" style="width:190px;">show more product</button>
+</div>
+<div id="content">
+
+</div>
+
+</body>
+<script>
+    $(document).ready(function(){
+        $("button").click(function(){
+            var url = "/expertu/detail";
+            // var data = {type:1};
+            $.ajax({
+                type : "post",
+                async : true,
+                url : url,
+                // data : data,
+                timeout:1000,
+                success:function(dates){
+                    //alert(dates);
+                    $("#content").html(username);//要刷新的div
+                },
+                error: function() {
+                    // alert("失败，请稍后再试！");
+                }
+            });
+        });
+    })
+</script>
+</html>

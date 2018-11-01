@@ -1,6 +1,7 @@
 package com.dao;
 
 import com.domain.User;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -18,4 +19,6 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    User selectByUsernameAndPwd(@Param("username") String username, @Param("password") String password);
 }

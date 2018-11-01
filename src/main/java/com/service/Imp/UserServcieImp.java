@@ -52,4 +52,10 @@ public class UserServcieImp implements UserService {
 
         return userMapper.selectByPrimaryKey(id);
     }
+
+    @Override
+    public User getUserByUserNameAndPwd(String username, String password) {
+        System.out.println("service"+username);
+        return userMapper.selectByUsernameAndPwd(username,password);
+    }
 }
