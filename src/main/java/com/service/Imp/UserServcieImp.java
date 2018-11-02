@@ -13,7 +13,17 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+/**
 
+ *  Service layer : UserServcie Implementation class
+
+ * @author andre
+
+ * @Time 2018/10/29
+
+ *
+
+ */
 @Service
 public class UserServcieImp implements UserService {
     @Autowired
@@ -22,12 +32,17 @@ public class UserServcieImp implements UserService {
     @Autowired
     private RedisTemplate<Object,Object> redisTemplate;
 
+    /**
+     * Get all the Userinfo
+     * @return List<User>
+     */
     @Override
     public List<User> getUser() {
 
         RedisSerializer redisSerializer = new StringRedisSerializer();
         redisTemplate.setStringSerializer(redisSerializer);
-        //高并发,双重锁
+
+
         List<User> list= (List<User>) redisTemplate.opsForValue().get("allUser");
         if(null == list){
             synchronized (this){
@@ -41,18 +56,35 @@ public class UserServcieImp implements UserService {
         return list ;
     }
 
+    /**
+     * update User
+     * @param user
+     * @return
+     */
     @Override
     @Transactional
     public int updateUser(User user) {
+
         return userMapper.updateByPrimaryKeySelective(user);
     }
 
+    /**
+     * get User by id
+     * @param id
+     * @return
+     */
     @Override
     public User getUserByid(Integer id) {
 
         return userMapper.selectByPrimaryKey(id);
     }
 
+    /**
+     * get User by username and password
+     * @param username
+     * @param password
+     * @return
+     */
     @Override
     public User getUserByUserNameAndPwd(String username, String password) {
         System.out.println("service"+username);

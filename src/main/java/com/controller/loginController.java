@@ -8,16 +8,40 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+/**
 
+ *  Controller layer for login page
+
+ * @author andre
+
+ * @Time 2018/10/29
+
+ *
+
+ */
 @RestController
 public class loginController {
     @Autowired
     private UserService userService;
+
+    /**
+     * redirect to login page
+     * @param modelAndView
+     * @return
+     */
     @GetMapping("/login")
     public ModelAndView login(ModelAndView modelAndView){
         modelAndView.setViewName("login");
         return modelAndView;
     }
+
+    /**
+     * login validate
+     * @param username
+     * @param password
+     * @param session
+     * @return
+     */
     @PostMapping("/login")
     public ModelAndView  login(@RequestParam("username") String username,
                         @RequestParam("password") String password,
@@ -25,12 +49,12 @@ public class loginController {
                         ){
 
         User userResult = (User) userService.getUserByUserNameAndPwd(username,password);
-        System.out.println(userResult);
         ModelAndView modelAndView = new ModelAndView();
         if(userResult != null)
         {
             modelAndView.setViewName("detail");
             modelAndView.addObject("username", userResult.getUsername());
+            session.setAttribute("username",username);
         }else{
             modelAndView.setViewName("login");
             modelAndView.addObject("error","login error");

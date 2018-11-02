@@ -1,0 +1,20 @@
+@charset "utf-8";
+*{
+    margin: 0px;
+    padding: 0px;
+}
+#detail{
+    width: 450px;
+    height: 290px;
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+#title{
+    font: bold italic 30px/50px "SimHei";
+}
+#name{
+    color: red;
+}

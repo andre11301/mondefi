@@ -1,6 +1,19 @@
 package com.domain;
 
-public class User {
+import java.io.Serializable;
+/**
+
+ *  Bean class User
+
+ * @author andre
+
+ * @Time 2018/10/29
+
+ *
+
+ */
+
+public class User implements Serializable {
     private Integer id;
 
     private String username;
