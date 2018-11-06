@@ -2,11 +2,10 @@ package com.controller;
 
 
 import com.domain.ProductDetail;
-import com.domain.User;
-import com.service.Imp.ProductDetailServiceImp;
 import com.service.ProductDetailService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,6 +28,8 @@ public class ProductDetailController {
     @Autowired
     private ProductDetailService productDetailService;
 
+    //add log
+    Logger logger = LoggerFactory.getLogger(getClass());
     /**
      * get all the product info
      * @return
@@ -36,8 +37,10 @@ public class ProductDetailController {
     @PostMapping("/detail")
     //get all the product infos
     public Object detail(){
+        logger.trace("detail(PostMapping)");
        List<ProductDetail> productDetailList = (List<ProductDetail>) productDetailService.getAllProduct();
-        return productDetailList;
+       logger.info("detail","productDetailList:"+productDetailList);
+       return productDetailList;
     }
 
     /**
@@ -46,6 +49,7 @@ public class ProductDetailController {
      */
     @GetMapping("/detail")
     public String detail1(){
+        logger.trace("detail(GetMapping)");
         return "detail";
     }
 }

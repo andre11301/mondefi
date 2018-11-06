@@ -4,6 +4,8 @@ import com.dao.ProductDetailMapper;
 import com.domain.ProductDetail;
 import com.domain.User;
 import com.service.ProductDetailService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.RedisSerializer;
@@ -30,13 +32,15 @@ public class ProductDetailServiceImp implements ProductDetailService {
     @Autowired
     private RedisTemplate<Object,Object> redisTemplate;
 
+    //add log
+    Logger logger = LoggerFactory.getLogger(getClass());
     /**
      * getting all the product infos
      * @return List<ProductDetail>
      */
     @Override
     public List<ProductDetail> getAllProduct() {
-
+        logger.trace("getAllProduct");
         RedisSerializer redisSerializer = new StringRedisSerializer();
         redisTemplate.setStringSerializer(redisSerializer);
 

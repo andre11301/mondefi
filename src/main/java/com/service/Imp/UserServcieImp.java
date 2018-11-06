@@ -4,6 +4,8 @@ import com.dao.UserMapper;
 import com.domain.User;
 import com.service.UserService;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.cache.CacheProperties;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -32,13 +34,15 @@ public class UserServcieImp implements UserService {
     @Autowired
     private RedisTemplate<Object,Object> redisTemplate;
 
+    //add log
+    Logger logger = LoggerFactory.getLogger(getClass());
     /**
      * Get all the Userinfo
      * @return List<User>
      */
     @Override
     public List<User> getUser() {
-
+        logger.trace("getUser");
         RedisSerializer redisSerializer = new StringRedisSerializer();
         redisTemplate.setStringSerializer(redisSerializer);
 
@@ -64,7 +68,7 @@ public class UserServcieImp implements UserService {
     @Override
     @Transactional
     public int updateUser(User user) {
-
+        logger.trace("updateUser");
         return userMapper.updateByPrimaryKeySelective(user);
     }
 
@@ -75,7 +79,7 @@ public class UserServcieImp implements UserService {
      */
     @Override
     public User getUserByid(Integer id) {
-
+        logger.trace("getUserByid");
         return userMapper.selectByPrimaryKey(id);
     }
 
@@ -87,7 +91,7 @@ public class UserServcieImp implements UserService {
      */
     @Override
     public User getUserByUserNameAndPwd(String username, String password) {
-        System.out.println("service"+username);
+        logger.trace("getUserByUserNameAndPwd");
         return userMapper.selectByUsernameAndPwd(username,password);
     }
 }
