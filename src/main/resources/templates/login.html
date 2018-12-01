@@ -16,16 +16,16 @@
             <br />
         </div>
         <div>
-            <span id="username">UserName:</span>
-            <input id="user_name" name="username" type="text" placeholder="username" required/>
+            <span id="username" th:text="#{login.username}"></span>
+            <input id="user_name" name="username" type="text" placeholder="username" th:placeholder="#{login.username}" required/>
         </div>
         <br />
         <div>
-            <span id="password">Password:</span>
-            <input id="pass_word" name="password" type="password" placeholder="password" required/>
+            <span id="password" th:text="#{login.password}">Password:</span>
+            <input id="pass_word" name="password" type="password" placeholder="password" th:placeholder="#{login.password}" required/>
         </div>
         <br/>
-        <button type="submit" style="width:190px;">Login</button>
+        <button type="submit" style="width:190px;" th:text="#{login.btn}">Login</button>
 
     </form>
 </div>

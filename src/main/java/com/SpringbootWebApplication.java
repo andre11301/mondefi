@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
  */
 
-//@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
+
 @SpringBootApplication
 @MapperScan(basePackages = "com.dao")
 @EnableTransactionManagement
